@@ -4,26 +4,26 @@ using UnityEngine;
 
 public class character : MonoBehaviour
 {
-    [SerializedField]
+    [SerializeField]
     public int lives = 5;
-    [SerializedField]
+    [SerializeField]
     public float speed = 3.0F;
-    [SerializedField]
+    [SerializeField]
     public float jumpForce = 15.0F;
 
-    new private RigidBody2D rigidBody2D;
+    new private Rigidbody2D rb2D;
     public Animator animator;
     public SpriteRenderer sprite;
 
     private void Awake()
     {
-        rigidBody2D = GetComponent<Rigidbody2D>();
+        rb2D = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        spriteRender = GetComponentInChildren<SpriteRenderer>();
+        sprite = GetComponentInChildren<SpriteRenderer>();
     }
 
     private void Update() {
         Vector3 direction = transform.right * Input.GetAxis("Horizontal");
-        transform.position = Vector3.MoveTowards();
+        transform.position = Vector3.MoveTowards(transform.position, transform.position + direction, speed * Time.deltaTime);
     }
 }
