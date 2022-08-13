@@ -18,6 +18,5 @@ public class moneyText : MonoBehaviour
     void Update()
     {
         text.text = coin.ToString(); 
-        Debug.Log(coin);  
     }
 }
